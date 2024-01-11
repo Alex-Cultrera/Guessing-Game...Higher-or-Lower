@@ -8,12 +8,39 @@ public class Assingment2Application {
 	public static void main(String[] args) {
 		Random random = new Random();
 		random.nextInt(1, 101);
-		System.out.println("Pick a number from 1 to 100");
+		
+		Game game = new Game();
+		
+		
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
-		Integer convertedInput = Integer.parseInt(input);
 		
-		if 
+		
+		System.out.println(game.getNumber());
+		Scanner scanner = new Scanner(System.in);
+		String input = scanner.nextLine();
+		int convertedInput = Integer.parseInt(input);
+		int guess = 0;
+		if (convertedInput >= 1) 
+		{
+			if (convertedInput < 101) {
+				guess = 1;
+				while (guess < 6) {
+				guess++;	
+				System.out.println(game.getNumber());
+				}
+			}
+			else if (convertedInput > 100) {
+				System.out.println("Your guess is not between 1 and 100, please try again");
+			}
+				
+		}
+		else if (convertedInput < 1) {
+			System.out.println("Your guess is not between 1 and 100, please try again");
+		}
+		
+		
+		
 
 	}
 
