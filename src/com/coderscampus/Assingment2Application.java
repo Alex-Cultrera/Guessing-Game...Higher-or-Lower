@@ -7,79 +7,48 @@ public class Assingment2Application {
 
 	public static void main(String[] args) {
 		Random random = new Random();
-		random.nextInt(1, 101);
+		int theRandomNumber = random.nextInt(1, 101);
+		Scanner scanner;
+		String input;
+		int convertedInput;
+		System.out.println("Pick a number from 1 to 100");
 		
-		Game game = new Game();
-		
-		
-		Scanner scanner = new Scanner(System.in);
-		String input = scanner.nextLine();
-		
-		
-		System.out.println(game.getNumber());
-		Scanner scanner = new Scanner(System.in);
-		String input = scanner.nextLine();
-		int convertedInput = Integer.parseInt(input);
-		int guess = 0;
-		if (convertedInput >= 1) 
-		{
-			if (convertedInput < 101) {
-				guess = 1;
-				while (guess < 6) {
-				guess++;	
-				System.out.println(game.getNumber());
+		int guess = 1;
+		while (guess < 6) {
+			scanner = new Scanner(System.in);
+			input = scanner.nextLine();
+			convertedInput = Integer.parseInt(input);
+			if (convertedInput >= 1) 
+			{
+				if (convertedInput == theRandomNumber) {
+					System.out.println("You win!");
+					System.exit(0); 
 				}
+				else if (convertedInput < 101) {
+					if (convertedInput < theRandomNumber) {
+						System.out.println("Please pick a higher number");
+					}
+					else if (convertedInput > theRandomNumber) {
+						System.out.println("Please pick a lower number");
+					}
+				}
+				else if (convertedInput > 100) {
+					System.out.println("Your guess is not between 1 and 100, please try again");
+					System.out.println("Pick a number from 1 to 100");
+					guess--;
+				}
+					
 			}
-			else if (convertedInput > 100) {
+			else if (convertedInput < 1) {
 				System.out.println("Your guess is not between 1 and 100, please try again");
+				System.out.println("Pick a number from 1 to 100");
+				guess--;
 			}
-				
+		guess++;
+		
 		}
-		else if (convertedInput < 1) {
-			System.out.println("Your guess is not between 1 and 100, please try again");
-		}
+		System.out.println("You Lose!");
+		System.out.println("The number to guess was: " + theRandomNumber);
 		
-		
-		
-
 	}
-
 }
-
-
-/*////////  Assigment 2  //////////
- 
- Higher / Lower Guessing Game
- 
- a random number will be generated >>>>>>> random.nextInt(1, 101);
- 
- players guess a number from 1 to 100 >>>>>>> System.out.println("Pick a number from 1 to 100");
- 
- Note: should only generate int values (don’t use floats / doubles)
- 
- If the number chosen is outside of this range, an error message displays saying: 
- “Your guess is not between 1 and 100, please try again”
- 
- Note: an invalid input should not affect the number of guesses the player has left 
- (so do not remove a guess from the player if they enter a number outside of the 1 - 100 range)
- (Don’t worry about trying to validate any input other than int values; 
- ie. Don’t worry about decimals or words)
- 
- When the player enters a valid guess (a number between 1 and 100), 
- the game should prompt the player with one of three messages:
-1. “Please pick a higher number” (if the number they chose is lower than the randomly generated number), or
-2. “Please pick a lower number” (if the number they chose is higher than the randomly generated number), or
-3. “You win!” (if they guess the correct number)
-
-The player only gets 5 chances to guess the number.
-
-If they haven’t guessed the correct number after 5 tries, 
-then the game is over and the outputted message should read 
-“You lose, the number to guess was theRandomNumber” 
-(where theRandomNumber is the actual value of the variable generated at the beginning of the game)
-
-Once the user fails to guess the number, or if they correctly guess the number, 
-the game is over and the application ends.
-
- 
- */
